@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>靳单汇｜校园即时任务抢单平台</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#2F6BFF',
+            brandSoft: '#EAF1FF',
+            urgent: '#FF5A5F',
+            success: '#2ED573',
+            ink: '#1F1F1F',
+            sub: '#666666',
+            hint: '#999999',
+            line: '#EEEEEE',
+            page: '#F7F8FA'
+          },
+          boxShadow: {
+            card: '0 2px 8px rgba(0,0,0,0.06)',
+            float: '0 6px 20px rgba(0,0,0,0.12)',
+            grab: '0 10px 30px rgba(0,0,0,0.18)'
+          },
+          fontFamily: {
+            sans: ['PingFang SC', 'HarmonyOS Sans', 'Microsoft YaHei', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: radial-gradient(circle at top left, rgba(47,107,255,.12), transparent 30%), #F7F8FA; }
+    .phone-shell { max-width: 430px; min-height: 860px; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .tab-active { color: #2F6BFF; }
+    .tab-active .tab-dot { transform: scale(1); opacity: 1; }
+    .glass { backdrop-filter: blur(18px); background: rgba(255,255,255,.86); }
+  </style>
+</head>
+<body class="font-sans text-ink">
+  <main class="min-h-screen px-4 py-6 lg:px-8">
+    <section class="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1fr_430px]">
+      <aside class="hidden lg:flex lg:flex-col lg:justify-between rounded-[32px] bg-white p-8 shadow-card overflow-hidden relative">
+        <div class="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brandSoft"></div>
+        <div class="absolute -bottom-24 left-10 h-80 w-80 rounded-full bg-[#FFF1D9]"></div>
+        <div class="relative z-10">
+          <span class="inline-flex rounded-full bg-brandSoft px-4 py-2 text-sm font-medium text-brand">MVP 校园试点版</span>
+          <h1 class="mt-8 text-5xl font-bold leading-tight tracking-tight">10分钟<br />匹配真人能力</h1>
+          <p class="mt-5 max-w-xl text-lg leading-8 text-sub">靳单汇连接校园里的临时需求与技能型大学生，用轻任务、快速匹配、即时完成的方式，把零散需求变成可信的任务市场。</p>
+          <div class="mt-8 grid max-w-2xl grid-cols-3 gap-4">
+            <div class="rounded-2xl bg-page p-5">
+              <p class="text-3xl font-bold text-brand">≤10m</p>
+              <p class="mt-2 text-sm text-sub">平均接单目标</p>
+            </div>
+            <div class="rounded-2xl bg-page p-5">
+              <p class="text-3xl font-bold text-success">70%</p>
+              <p class="mt-2 text-sm text-sub">任务完成率</p>
+            </div>
+            <div class="rounded-2xl bg-page p-5">
+              <p class="text-3xl font-bold text-urgent">50+</p>
+              <p class="mt-2 text-sm text-sub">日活跃发单</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative z-10 mt-8 rounded-[28px] bg-gradient-to-br from-brand to-[#7D9BFF] p-6 text-white shadow-float">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm opacity-80">核心模式</p>
+              <p class="mt-1 text-2xl font-bold">发单 → 任务池 → 抢单 → 完成</p>
+            </div>
+            <div class="grid h-20 w-20 place-items-center rounded-3xl bg-white/18">
+              <svg viewBox="0 0 120 120" class="h-14 w-14">
+                <circle cx="60" cy="60" r="44" fill="#fff" opacity=".18"/>
+                <path d="M35 64c14-21 34-27 54-18-5 23-20 37-44 40 4-7 6-14 5-20-5 1-10 0-15-2z" fill="#fff"/>
+                <circle cx="78" cy="43" r="6" fill="#FFDA6B"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="phone-shell mx-auto w-full overflow-hidden rounded-[34px] border border-white bg-page shadow-float">
+        <header class="glass sticky top-0 z-30 border-b border-line px-5 pb-3 pt-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs text-hint">单一校园试点</p>
+              <h2 class="text-xl font-bold">靳单汇</h2>
+            </div>
+            <button id="profileQuick" class="flex h-11 w-11 items-center justify-center rounded-full bg-brand text-sm font-bold text-white shadow-card">靳</button>
+          </div>
+          <div class="mt-4 flex items-center gap-2 rounded-xl bg-white px-3 py-3 shadow-card">
+            <svg class="h-5 w-5 text-hint" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35"/><circle cx="11" cy="11" r="7"/></svg>
+            <input id="searchInput" class="w-full bg-transparent text-sm outline-none placeholder:text-hint" placeholder="搜索 P图、PPT、简历、AI图片" />
+          </div>
+        </header>
+
+        <div class="h-[735px] overflow-y-auto pb-24 no-scrollbar">
+          <section id="homePage" class="page-view px-5 pt-5">
+            <div class="rounded-3xl bg-gradient-to-br from-brand to-[#6F8DFF] p-5 text-white shadow-float">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-sm opacity-80">今日任务池</p>
+                  <h3 class="mt-1 text-2xl font-bold">32 个任务等待抢单</h3>
+                  <p class="mt-3 text-sm leading-6 opacity-90">响应越快，排序越靠前。优先展示 10 分钟急单。</p>
+                </div>
+                <div class="rounded-2xl bg-white/18 p-3">
+                  <svg class="h-14 w-14" viewBox="0 0 96 96">
+                    <rect x="18" y="22" width="44" height="54" rx="12" fill="#fff" opacity=".96"/>
+                    <rect x="28" y="34" width="24" height="5" rx="2.5" fill="#2F6BFF"/>
+                    <rect x="28" y="47" width="18" height="5" rx="2.5" fill="#EAF1FF"/>
+                    <circle cx="66" cy="58" r="15" fill="#FFDA6B"/>
+                    <path d="M60 58h12M66 52v12" stroke="#1F1F1F" stroke-width="4" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <button data-switch="publishPage" class="mt-5 h-11 w-full rounded-lg bg-white font-medium text-brand">发布一个急单</button>
+            </div>
+
+            <div class="mt-6 grid grid-cols-3 gap-3">
+              <button data-filter="急单" class="category-btn rounded-2xl bg-white p-4 text-left shadow-card ring-2 ring-brand">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-[#FFECEE] text-lg">⚡</span>
+                <p class="mt-3 text-sm font-semibold">急单</p>
+                <p class="mt-1 text-xs text-hint">10min</p>
+              </button>
+              <button data-filter="学习" class="category-btn rounded-2xl bg-white p-4 text-left shadow-card">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-brandSoft text-lg">📚</span>
+                <p class="mt-3 text-sm font-semibold">学习任务</p>
+                <p class="mt-1 text-xs text-hint">PPT/简历</p>
+              </button>
+              <button data-filter="设计" class="category-btn rounded-2xl bg-white p-4 text-left shadow-card">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-[#ECFFF4] text-lg">🎨</span>
+                <p class="mt-3 text-sm font-semibold">轻设计</p>
+                <p class="mt-1 text-xs text-hint">AI图/P图</p>
+              </button>
+            </div>
+
+            <div class="mt-6 flex items-center justify-between">
+              <h3 class="text-lg font-semibold">推荐任务</h3>
+              <button id="resetFilter" class="text-sm font-medium text-brand">全部</button>
+            </div>
+            <div id="taskList" class="mt-3 space-y-3"></div>
+          </section>
+
+          <section id="publishPage" class="page-view hidden px-5 pt-5">
+            <div class="mb-5">
+              <h3 class="text-xl font-bold">发布任务</h3>
+              <p class="mt-1 text-sm text-sub">预算和时间限制为必填，平台暂不接入支付。</p>
+            </div>
+            <form id="publishForm" class="space-y-4 rounded-2xl bg-white p-4 shadow-card">
+              <label class="block">
+                <span class="text-sm font-medium">任务类型</span>
+                <select id="taskType" class="mt-2 h-11 w-full rounded-lg border border-line bg-white px-3 text-sm outline-brand">
+                  <option>证件照 / P图</option>
+                  <option>PPT / 简历优化</option>
+                  <option>AI图片 / 简单设计</option>
+                  <option>文案 / 作业辅助</option>
+                </select>
+              </label>
+              <label class="block">
+                <span class="text-sm font-medium">任务描述</span>
+                <textarea id="taskDesc" rows="4" class="mt-2 w-full rounded-xl border border-line px-3 py-3 text-sm outline-brand" placeholder="例如：帮我把证件照换成蓝底，10分钟内需要"></textarea>
+              </label>
+              <div class="grid grid-cols-2 gap-3">
+                <label class="block">
+                  <span class="text-sm font-medium">预算</span>
+                  <input id="taskBudget" type="number" min="5" value="18" class="mt-2 h-11 w-full rounded-lg border border-line px-3 text-sm outline-brand" />
+                </label>
+                <label class="block">
+                  <span class="text-sm font-medium">截止时间</span>
+                  <select id="taskTime" class="mt-2 h-11 w-full rounded-lg border border-line bg-white px-3 text-sm outline-brand">
+                    <option value="10">10分钟</option>
+                    <option value="30">30分钟</option>
+                    <option value="60">60分钟</option>
+                  </select>
+                </label>
+              </div>
+              <div class="rounded-xl border border-dashed border-brand bg-brandSoft p-4 text-center">
+                <p class="text-sm font-medium text-brand">上传附件</p>
+                <p class="mt-1 text-xs text-sub">支持图片 / 文件，此页面为交互原型</p>
+              </div>
+              <button class="h-11 w-full rounded-lg bg-brand text-sm font-medium text-white shadow-card">提交到任务池</button>
+            </form>
+            <div class="mt-5 rounded-2xl bg-white p-4 shadow-card">
+              <h4 class="font-semibold">发布规则</h4>
+              <div class="mt-3 space-y-2 text-sm text-sub">
+                <p>每个任务必须有预算和时间限制。</p>
+                <p>超时未接单会自动扩大推荐范围。</p>
+                <p>用户确认后才算完成，超时可默认确认。</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="ordersPage" class="page-view hidden px-5 pt-5">
+            <div class="mb-5 flex items-center justify-between">
+              <div>
+                <h3 class="text-xl font-bold">我的任务</h3>
+                <p class="mt-1 text-sm text-sub">跟踪待接单、执行中与已完成任务。</p>
+              </div>
+              <span class="rounded-full bg-brandSoft px-3 py-1 text-xs font-medium text-brand">信用良好</span>
+            </div>
+            <div class="grid grid-cols-4 gap-2">
+              <button data-status="等待接单" class="status-filter rounded-xl bg-brand px-2 py-3 text-xs font-medium text-white">待接单</button>
+              <button data-status="已接单" class="status-filter rounded-xl bg-white px-2 py-3 text-xs font-medium text-sub shadow-card">已接单</button>
+              <button data-status="执行中" class="status-filter rounded-xl bg-white px-2 py-3 text-xs font-medium text-sub shadow-card">执行中</button>
+              <button data-status="已完成" class="status-filter rounded-xl bg-white px-2 py-3 text-xs font-medium text-sub shadow-card">已完成</button>
+            </div>
+            <div id="statusList" class="mt-4 space-y-3"></div>
+          </section>
+
+          <section id="minePage" class="page-view hidden px-5 pt-5">
+            <div class="rounded-3xl bg-white p-5 shadow-card">
+              <div class="flex items-center gap-4">
+                <div class="grid h-16 w-16 place-items-center rounded-2xl bg-brand text-2xl font-bold text-white">靳</div>
+                <div>
+                  <h3 class="text-xl font-bold">校园接单者</h3>
+                  <p class="mt-1 text-sm text-sub">设计 / PPT / AI工具使用者</p>
+                </div>
+              </div>
+              <div class="mt-5 grid grid-cols-3 gap-3 text-center">
+                <div class="rounded-2xl bg-page p-3">
+                  <p class="text-lg font-bold">4.9</p>
+                  <p class="text-xs text-hint">评分</p>
+                </div>
+                <div class="rounded-2xl bg-page p-3">
+                  <p class="text-lg font-bold">92%</p>
+                  <p class="text-xs text-hint">完成率</p>
+                </div>
+                <div class="rounded-2xl bg-page p-3">
+                  <p class="text-lg font-bold">6m</p>
+                  <p class="text-xs text-hint">响应</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-5 grid grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-white p-4 shadow-card">
+                <p class="text-sm text-sub">虚拟收益</p>
+                <p class="mt-2 text-2xl font-bold text-brand">¥268</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 shadow-card">
+                <p class="text-sm text-sub">信用等级</p>
+                <p class="mt-2 text-2xl font-bold text-success">A</p>
+              </div>
+            </div>
+            <div class="mt-5 rounded-2xl bg-white p-4 shadow-card">
+              <h4 class="font-semibold">信用体系</h4>
+              <div class="mt-4 space-y-3">
+                <div>
+                  <div class="mb-1 flex justify-between text-xs text-sub"><span>完成质量</span><span>96%</span></div>
+                  <div class="h-2 rounded-full bg-page"><div class="h-2 w-[96%] rounded-full bg-success"></div></div>
+                </div>
+                <div>
+                  <div class="mb-1 flex justify-between text-xs text-sub"><span>响应速度</span><span>88%</span></div>
+                  <div class="h-2 rounded-full bg-page"><div class="h-2 w-[88%] rounded-full bg-brand"></div></div>
+                </div>
+                <div>
+                  <div class="mb-1 flex justify-between text-xs text-sub"><span>按时完成</span><span>91%</span></div>
+                  <div class="h-2 rounded-full bg-page"><div class="h-2 w-[91%] rounded-full bg-urgent"></div></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <nav class="glass fixed bottom-4 left-1/2 z-40 grid w-[calc(100%-32px)] max-w-[398px] -translate-x-1/2 grid-cols-4 rounded-2xl border border-white px-2 py-2 shadow-float lg:absolute lg:bottom-4">
+          <button data-switch="homePage" class="nav-tab tab-active relative py-2 text-center text-xs font-medium text-sub">
+            <span class="block text-lg">🏠</span><span>首页</span><i class="tab-dot mx-auto mt-1 block h-1 w-4 scale-100 rounded-full bg-brand opacity-100 transition"></i>
+          </button>
+          <button data-switch="publishPage" class="nav-tab relative py-2 text-center text-xs font-medium text-sub">
+            <span class="block text-lg">＋</span><span>发布</span><i class="tab-dot mx-auto mt-1 block h-1 w-4 scale-0 rounded-full bg-brand opacity-0 transition"></i>
+          </button>
+          <button data-switch="ordersPage" class="nav-tab relative py-2 text-center text-xs font-medium text-sub">
+            <span class="block text-lg">📥</span><span>任务</span><i class="tab-dot mx-auto mt-1 block h-1 w-4 scale-0 rounded-full bg-brand opacity-0 transition"></i>
+          </button>
+          <button data-switch="minePage" class="nav-tab relative py-2 text-center text-xs font-medium text-sub">
+            <span class="block text-lg">👤</span><span>我的</span><i class="tab-dot mx-auto mt-1 block h-1 w-4 scale-0 rounded-full bg-brand opacity-0 transition"></i>
+          </button>
+        </nav>
+      </section>
+    </section>
+  </main>
+
+  <div id="grabModal" class="fixed inset-0 z-50 hidden items-end justify-center bg-black/40 p-4 sm:items-center">
+    <div class="w-full max-w-sm rounded-2xl bg-white p-5 shadow-grab">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm text-hint">抢单确认</p>
+          <h3 id="modalTitle" class="mt-1 text-xl font-bold">任务标题</h3>
+        </div>
+        <button id="closeModal" class="grid h-9 w-9 place-items-center rounded-full bg-page text-sub">×</button>
+      </div>
+      <p id="modalMeta" class="mt-3 text-sm leading-6 text-sub"></p>
+      <div class="mt-4 rounded-xl bg-brandSoft p-4 text-sm text-brand">抢单后必须开始执行；若超时未完成，将影响响应评分与信用等级。</div>
+      <button id="confirmGrab" class="mt-5 h-11 w-full rounded-lg bg-urgent text-sm font-medium text-white">立即抢单</button>
+    </div>
+  </div>
+
+  <div id="toast" class="fixed left-1/2 top-6 z-[60] hidden -translate-x-1/2 rounded-full bg-ink px-4 py-2 text-sm text-white shadow-float"></div>
+
+  <script>
+    const state = {
+      activeFilter: '急单',
+      activeStatus: '等待接单',
+      selectedTaskId: null,
+      tasks: [
+        { id: 1, title: '证件照蓝底换白底，需精修', type: '证件照 / P图', tag: '急单', budget: 18, time: 10, publisher: '李同学', rating: 4.8, status: '等待接单', desc: '用于报名系统，要求自然、边缘干净。' },
+        { id: 2, title: '3页课堂展示 PPT 美化', type: 'PPT / 简历优化', tag: '学习', budget: 35, time: 30, publisher: '王同学', rating: 4.7, status: '已接单', desc: '已有内容，帮忙统一版式和图标。' },
+        { id: 3, title: 'AI生成社团招新海报主视觉', type: 'AI图片 / 简单设计', tag: '设计', budget: 28, time: 30, publisher: '社团宣传部', rating: 4.9, status: '执行中', desc: '科技风，蓝色为主，需要一张主图。' },
+        { id: 4, title: '简历一页纸润色和排版', type: 'PPT / 简历优化', tag: '学习', budget: 45, time: 60, publisher: '陈同学', rating: 4.6, status: '已完成', desc: '求职实习投递，希望更简洁专业。' },
+        { id: 5, title: '作业报告封面简单设计', type: 'AI图片 / 简单设计', tag: '设计', budget: 16, time: 10, publisher: '赵同学', rating: 4.5, status: '等待接单', desc: '主题是校园环保，清爽即可。' }
+      ]
+    };
+
+    const statusStyle = {
+      '等待接单': 'bg-brandSoft text-brand',
+      '已接单': 'bg-orange-50 text-orange-500',
+      '执行中': 'bg-purple-50 text-purple-500',
+      '已完成': 'bg-green-50 text-success',
+      '已关闭': 'bg-gray-100 text-gray-500'
+    };
+
+    function tagClass(tag) {
+      if (tag === '急单') return 'bg-[#FFECEE] text-urgent';
+      if (tag === '学习') return 'bg-brandSoft text-brand';
+      return 'bg-[#ECFFF4] text-success';
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById('toast');
+      toast.textContent = text;
+      toast.classList.remove('hidden');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => toast.classList.add('hidden'), 1800);
+    }
+
+    function taskCard(task) {
+      return `
+        <article class="rounded-2xl bg-white p-4 shadow-card" data-title="${task.title}" data-type="${task.type}">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h4 class="font-semibold leading-6">${task.title}</h4>
+              <p class="mt-1 line-clamp-2 text-sm text-sub">${task.desc}</p>
+            </div>
+            <p class="shrink-0 text-xl font-bold text-urgent">¥${task.budget}</p>
+          </div>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="rounded-md px-2 py-1 text-xs font-medium ${tagClass(task.tag)}">${task.type}</span>
+            <span class="rounded-md px-2 py-1 text-xs font-medium ${task.time === 10 ? 'bg-[#FFECEE] text-urgent' : 'bg-gray-100 text-sub'}">${task.time}min</span>
+            <span class="rounded-md px-2 py-1 text-xs font-medium ${statusStyle[task.status]}">${task.status}</span>
+          </div>
+          <div class="mt-4 flex items-center justify-between border-t border-line pt-3">
+            <div class="text-xs text-hint">
+              <span>${task.publisher}</span>
+              <span class="mx-1">·</span>
+              <span>评分 ${task.rating}</span>
+            </div>
+            <button data-grab="${task.id}" class="grab-btn h-9 rounded-lg ${task.status === '等待接单' ? 'bg-brand text-white' : 'bg-page text-hint'} px-4 text-xs font-medium" ${task.status !== '等待接单' ? 'disabled' : ''}>${task.status === '等待接单' ? '立即抢单' : '查看详情'}</button>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderTasks() {
+      const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+      const list = document.getElementById('taskList');
+      const filtered = state.tasks.filter(task => {
+        const matchesFilter = !state.activeFilter || task.tag === state.activeFilter;
+        const matchesKeyword = !keyword || `${task.title}${task.type}${task.desc}`.toLowerCase().includes(keyword);
+        return matchesFilter && matchesKeyword;
+      });
+      list.innerHTML = filtered.length ? filtered.map(taskCard).join('') : `<div class="rounded-2xl bg-white p-6 text-center text-sm text-hint shadow-card">暂无匹配任务，试试切换分类或搜索关键词。</div>`;
+      bindGrabButtons();
+    }
+
+    function renderStatusList() {
+      const list = document.getElementById('statusList');
+      const filtered = state.tasks.filter(task => task.status === state.activeStatus);
+      list.innerHTML = filtered.length ? filtered.map(taskCard).join('') : `<div class="rounded-2xl bg-white p-6 text-center text-sm text-hint shadow-card">当前状态下暂无任务。</div>`;
+      bindGrabButtons();
+    }
+
+    function switchPage(pageId) {
+      document.querySelectorAll('.page-view').forEach(page => page.classList.add('hidden'));
+      document.getElementById(pageId).classList.remove('hidden');
+      document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('tab-active'));
+      document.querySelectorAll(`[data-switch="${pageId}"]`).forEach(tab => tab.classList.add('tab-active'));
+      if (pageId === 'ordersPage') renderStatusList();
+    }
+
+    function bindGrabButtons() {
+      document.querySelectorAll('.grab-btn').forEach(btn => {
+        btn.onclick = () => {
+          const task = state.tasks.find(item => item.id === Number(btn.dataset.grab));
+          if (!task || task.status !== '等待接单') return;
+          state.selectedTaskId = task.id;
+          document.getElementById('modalTitle').textContent = task.title;
+          document.getElementById('modalMeta').textContent = `${task.type}｜预算 ¥${task.budget}｜${task.time}分钟内完成｜发布者 ${task.publisher}`;
+          document.getElementById('grabModal').classList.remove('hidden');
+          document.getElementById('grabModal').classList.add('flex');
+        };
+      });
+    }
+
+    document.querySelectorAll('[data-switch]').forEach(btn => {
+      btn.addEventListener('click', () => switchPage(btn.dataset.switch));
+    });
+
+    document.getElementById('profileQuick').addEventListener('click', () => switchPage('minePage'));
+
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.activeFilter = btn.dataset.filter;
+        document.querySelectorAll('.category-btn').forEach(item => item.classList.remove('ring-2', 'ring-brand'));
+        btn.classList.add('ring-2', 'ring-brand');
+        renderTasks();
+      });
+    });
+
+    document.getElementById('resetFilter').addEventListener('click', () => {
+      state.activeFilter = '';
+      document.querySelectorAll('.category-btn').forEach(item => item.classList.remove('ring-2', 'ring-brand'));
+      renderTasks();
+    });
+
+    document.getElementById('searchInput').addEventListener('input', renderTasks);
+
+    document.querySelectorAll('.status-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.activeStatus = btn.dataset.status;
+        document.querySelectorAll('.status-filter').forEach(item => {
+          item.classList.remove('bg-brand', 'text-white');
+          item.classList.add('bg-white', 'text-sub', 'shadow-card');
+        });
+        btn.classList.add('bg-brand', 'text-white');
+        btn.classList.remove('bg-white', 'text-sub', 'shadow-card');
+        renderStatusList();
+      });
+    });
+
+    document.getElementById('publishForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const type = document.getElementById('taskType').value;
+      const desc = document.getElementById('taskDesc').value.trim() || '用户暂未填写详细说明。';
+      const time = Number(document.getElementById('taskTime').value);
+      const newTask = {
+        id: Date.now(),
+        title: desc.slice(0, 18) + (desc.length > 18 ? '...' : ''),
+        type,
+        tag: time === 10 ? '急单' : type.includes('PPT') ? '学习' : '设计',
+        budget: Number(document.getElementById('taskBudget').value || 10),
+        time,
+        publisher: '我',
+        rating: 5.0,
+        status: '等待接单',
+        desc
+      };
+      state.tasks.unshift(newTask);
+      document.getElementById('publishForm').reset();
+      document.getElementById('taskBudget').value = 18;
+      showToast('已发布到任务池');
+      switchPage('homePage');
+      state.activeFilter = '';
+      document.querySelectorAll('.category-btn').forEach(item => item.classList.remove('ring-2', 'ring-brand'));
+      renderTasks();
+    });
+
+    document.getElementById('closeModal').addEventListener('click', () => {
+      document.getElementById('grabModal').classList.add('hidden');
+      document.getElementById('grabModal').classList.remove('flex');
+    });
+
+    document.getElementById('confirmGrab').addEventListener('click', () => {
+      const task = state.tasks.find(item => item.id === state.selectedTaskId);
+      if (task) task.status = '已接单';
+      document.getElementById('grabModal').classList.add('hidden');
+      document.getElementById('grabModal').classList.remove('flex');
+      showToast('抢单成功，已加入我的任务');
+      renderTasks();
+      renderStatusList();
+    });
+
+    renderTasks();
+    renderStatusList();
+  </script>
+</body>
+</html>
