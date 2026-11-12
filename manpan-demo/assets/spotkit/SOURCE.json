@@ -1,0 +1,44 @@
+{
+  "repository": "https://github.com/Devesh-Shirsath/spotkit",
+  "commit": "f9b6a611e14c68a88fae44b4c67777a25b9c1d2c",
+  "created_at_utc": "2026-11-12T06:40:21.395531+00:00",
+  "license": "MIT License\n\nCopyright (c) 2026 Devesh Shirsath\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+  "icons": "Phosphor regular paths copied from bundled references/icons.md",
+  "adaptations": {
+    "geometry": "Preserved original panel, backdrop, floats and card positions",
+    "palette": "Changed literal token fallbacks only; neutral placeholder bars remain neutral",
+    "data-connect": "L9 gateway hub tree glyph replaced with bundled Phosphor database glyph; hub icon is violet accent",
+    "evidence-review": "L12 approval with orange accent check; no asserted actual review result",
+    "action-followup": "L11 audit timeline with gold accent first node",
+    "content_bars": "Short-over-long bar pairs corrected within original card and panel geometry; no panel/float/card coordinates changed"
+  },
+  "source_examples": {
+    "data-connect.svg": {
+      "path": "examples/gateway.svg",
+      "sha256": "b03178200fc8e060eac63f100e08d5cd58a66470cd0197a19eb4891509fb0068"
+    },
+    "evidence-review.svg": {
+      "path": "examples/approval.svg",
+      "sha256": "65d8cf42df4a2f9169313b9e7beadc40386958700cd4323d5097a1c52006047b"
+    },
+    "action-followup.svg": {
+      "path": "examples/audit.svg",
+      "sha256": "3e1d2ccf159a179345cc381f70ca79b186e4337ec6576abf8e496ec0e90133a5"
+    }
+  },
+  "file_sha256": {
+    "action-followup.svg": "6aa22bafe5750ec53123623faa4e9128417a6419fc18aa98d3ae36bc8cdcbbf0",
+    "README.md": "6c4cb7a77cc75a2d18220d8cb9e9718b4d00573e5a89b21d16a0fd841284a2bd",
+    "LICENSE-phosphor.txt": "b5b1f1da112d18ea2147decfd48ddc1bf2b5aeb6c265381579340e95b15a2bb2",
+    "evidence-review.svg": "4c059d828e245c3cb7f4dc34e71601afa33f8da3cee817e2004f4c4c6dd991eb",
+    "data-connect.svg": "965eea03fa1dc2d39adae56ba007bea1c4b1207855185d3d7aa6fd9794454836",
+    "LICENSE-spotkit.txt": "ffa4edc7e44e2bc4eeecd652d11325bd299133da6a2a63c5e89adb8cbf055ce1"
+  },
+  "phosphor_license_source": "https://raw.githubusercontent.com/phosphor-icons/core/main/LICENSE",
+  "checks": {
+    "spotkit_check": "All three SVG files passed check.py",
+    "xml_parsed": true,
+    "geometry_scale_review": "Static CairoSVG contact reviewed at 250px artwork,20/24/32px icons",
+    "render_limitations": "CairoSVG does not faithfully apply luminance fade masks or feDropShadow. Geometry and icon readability checked only; browser integration remains owner verification."
+  }
+}

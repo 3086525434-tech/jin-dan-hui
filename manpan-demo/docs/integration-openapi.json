@@ -1,0 +1,485 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "满盘有数数据与分析接入草案",
+    "version": "0.1.0-draft",
+    "description": "供未来同源网关对接的草案；当前网站没有部署这些接口。公开页面不授予真实数据或模型接口访问权，生产服务须另行落实身份和范围授权。"
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": "未来同源服务，尚未接入"
+    }
+  ],
+  "x-production-authentication-required": true,
+  "x-authentication-status": "待确认服务端身份与权限方案；本草案不定义或授予匿名 API 权限。",
+  "paths": {
+    "/api/integrations/data/health": {
+      "get": {
+        "operationId": "getDataHealth",
+        "summary": "检查数据服务可达性",
+        "responses": {
+          "200": {
+            "description": "仅代表服务可达",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataHealth"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/api/integrations/agent/health": {
+      "get": {
+        "operationId": "getAgentHealth",
+        "summary": "检查分析 Agent 服务可达性",
+        "responses": {
+          "200": {
+            "description": "不表示模型效果已验收",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentHealth"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/api/datasets/current": {
+      "get": {
+        "operationId": "getCurrentDataset",
+        "summary": "读取一个获准展示的数据批次",
+        "description": "只读渠道日聚合，不提供对象日归因或生产案件。日期必须唯一、升序，首尾与批次范围相符；不得补造缺失日期或将缺失数值填为 0。",
+        "responses": {
+          "200": {
+            "description": "经授权并校验的数据批次",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dataset"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/api/analysis": {
+      "post": {
+        "operationId": "analyzeAuthorizedBatch",
+        "summary": "基于已授权冻结批次回答问题",
+        "description": "不会自动修改投放或案件。服务端必须验证批次、案件权限，引用实际证据，并区分事实、假设、审查与业务决定。此最小契约不等于完成 M04/M05 生产验收。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalysisRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "带来源引用的文字回答",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalysisResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DataHealth": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ok",
+          "service"
+        ],
+        "properties": {
+          "ok": {
+            "const": true
+          },
+          "service": {
+            "const": "data"
+          }
+        }
+      },
+      "AgentHealth": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ok",
+          "service"
+        ],
+        "properties": {
+          "ok": {
+            "const": true
+          },
+          "service": {
+            "const": "agent"
+          }
+        }
+      },
+      "BusinessDate": {
+        "type": "string",
+        "format": "date",
+        "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+        "description": "合法 YYYY-MM-DD 业务日期"
+      },
+      "Batch": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "source",
+          "generatedAt",
+          "channel",
+          "start",
+          "end",
+          "currency",
+          "grain",
+          "applicationsScope"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "description": "不可变批次标识",
+            "pattern": "\\S"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024,
+            "description": "可回溯费用/点击与申请两端来源的引用或版本，不含凭证",
+            "pattern": "\\S"
+          },
+          "generatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "maxLength": 64
+          },
+          "channel": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120,
+            "pattern": "\\S"
+          },
+          "start": {
+            "$ref": "#/components/schemas/BusinessDate"
+          },
+          "end": {
+            "$ref": "#/components/schemas/BusinessDate"
+          },
+          "currency": {
+            "const": "CNY"
+          },
+          "grain": {
+            "const": "channel_day"
+          },
+          "applicationsScope": {
+            "const": "all_channel"
+          }
+        },
+        "description": "单一渠道的只读聚合批次；start <= end，行日期必须位于范围内且首尾相符。"
+      },
+      "DailyRow": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "event_day",
+          "cost_yuan",
+          "click",
+          "apply_cnt"
+        ],
+        "properties": {
+          "event_day": {
+            "$ref": "#/components/schemas/BusinessDate"
+          },
+          "cost_yuan": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 9007199254740991,
+            "description": "有限非负人民币元，渠道 feed CPC 消耗；不得接受数字字符串、空值、NaN、Infinity 或溢出数值"
+          },
+          "click": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991,
+            "description": "同一 feed CPC 范围点击数"
+          },
+          "apply_cnt": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991,
+            "description": "APP 全渠道申请数；与 feed CPC 点击非同源，只能用于渠道 proxy"
+          }
+        }
+      },
+      "Dataset": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaVersion",
+          "batch",
+          "daily"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "const": "1.0"
+          },
+          "batch": {
+            "$ref": "#/components/schemas/Batch"
+          },
+          "daily": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 3660,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "#/components/schemas/DailyRow"
+            },
+            "description": "按日期升序且 event_day 不重复；日期唯一性和批次范围须通过额外语义校验。缺日不得补造 0。"
+          }
+        }
+      },
+      "AnalysisRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question",
+          "batchId"
+        ],
+        "properties": {
+          "question": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "pattern": "\\S"
+          },
+          "batchId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "\\S"
+          },
+          "caseId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "description": "可选的已授权真实案件，不能混写 DEMO-* 示例",
+            "pattern": "\\S"
+          }
+        }
+      },
+      "SourceReference": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "reference"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240,
+            "pattern": "\\S"
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024,
+            "description": "可回溯的冻结证据编号、批次来源或引用；不是可执行动作",
+            "pattern": "\\S"
+          }
+        }
+      },
+      "AnalysisResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "answer",
+          "sources",
+          "requestId"
+        ],
+        "properties": {
+          "answer": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50000,
+            "description": "按文字或安全 Markdown 显示，不执行 HTML、脚本或业务指令",
+            "pattern": "\\S"
+          },
+          "sources": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 64,
+            "items": {
+              "$ref": "#/components/schemas/SourceReference"
+            }
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "\\S"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "\\S"
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000,
+            "pattern": "\\S"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "\\S"
+          }
+        },
+        "description": "面向用户的错误，不包含数据库连接串、密钥或内部堆栈。"
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "请求或范围校验不通过",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "缺少有效访问身份",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "无权访问该批次、案件或模型服务",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "没有对应的获准数据批次或案件",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "RateLimited": {
+        "description": "调用频率或额度受限",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "Unavailable": {
+        "description": "上游未配置、不可用或超时",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}
