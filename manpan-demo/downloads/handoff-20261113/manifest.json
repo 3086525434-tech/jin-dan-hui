@@ -1,0 +1,169 @@
+{
+  "version": 1,
+  "collection": "manpan-handoff-20261113",
+  "artifacts": [
+    {
+      "id": "materials",
+      "label": "关键材料",
+      "filename": "manpan-key-materials-20261113.zip",
+      "bytes": 177355,
+      "sha256": "845e27063d66d70dcebdad9ee6393716fd881f35ba6a291928a0b464ff506f75",
+      "parts": [
+        {
+          "file": "materials-001.bin",
+          "iv": "DOr7k8qAFPmP9yTT",
+          "aad": "manpan-handoff-20261113:materials:0:1",
+          "bytes": 177371,
+          "plaintext_bytes": 177355,
+          "sha256": "b51208dad0b7d9ef6cd1f5008188014c6ea8177c5e773d622f1783a0d9bce027"
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "label": "核心项目",
+      "filename": "manpan-project-core-20261113.zip",
+      "bytes": 23819643,
+      "sha256": "b4c7cdfe8d4d4e2cdc3287c980883fde50928654db02a8662cd671bfd016f849",
+      "parts": [
+        {
+          "file": "core-001.bin",
+          "iv": "jaSh5cSb5e64Y5Fn",
+          "aad": "manpan-handoff-20261113:core:0:3",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "5526fee35ff321e0c73c3a34bd6901fbdc6d91035a14482f0969dd8ff09c86f0"
+        },
+        {
+          "file": "core-002.bin",
+          "iv": "bZpomu4mJeENRtl5",
+          "aad": "manpan-handoff-20261113:core:1:3",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "3ef35f26afd16e2f26d69cf317046db0407bbb876988c6c24b7f99032ef1e9ba"
+        },
+        {
+          "file": "core-003.bin",
+          "iv": "0kiXbnynytdoGmPW",
+          "aad": "manpan-handoff-20261113:core:2:3",
+          "bytes": 7042443,
+          "plaintext_bytes": 7042427,
+          "sha256": "d11194261a77c39bed1f5c56b7d547c5ca6e329c98a2cc0faf7f4b196dbd3361"
+        }
+      ]
+    },
+    {
+      "id": "full",
+      "label": "完整项目",
+      "filename": "manpan-project-full-20261113.zip",
+      "bytes": 103555437,
+      "sha256": "e0e4da562f9ee9fa5cf474b3c4aa2cd30b26b70bf82927b5b52d565fc9faaf37",
+      "parts": [
+        {
+          "file": "full-001.bin",
+          "iv": "RmXEn3uM4UUeEHfr",
+          "aad": "manpan-handoff-20261113:full:0:13",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "2ae32071551e7f928c88676ff6b692b38e8c87fd03a074addf45bb371336af65"
+        },
+        {
+          "file": "full-002.bin",
+          "iv": "eITvkAvATMiIUNIb",
+          "aad": "manpan-handoff-20261113:full:1:13",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "083b93d190b9cba141e0daac22abdaec1a467eb3476726765cba22c209eedfbd"
+        },
+        {
+          "file": "full-003.bin",
+          "iv": "v529pLhfhch/QjQv",
+          "aad": "manpan-handoff-20261113:full:2:13",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "55acd75ee59b4182cc3146f1e4a5236428b3145a32e1087e70093a38c376d7c8"
+        },
+        {
+          "file": "full-004.bin",
+          "iv": "ob5EklowYJfC/lkc",
+          "aad": "manpan-handoff-20261113:full:3:13",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "6c490804b5ff458f725dcd2db7717572240f5cdbc9dfe45a678c5410fe40815c"
+        },
+        {
+          "file": "full-005.bin",
+          "iv": "ir8KZ1oUvPyQwdIb",
+          "aad": "manpan-handoff-20261113:full:4:13",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "352d67cf527577c6eb6b3685692fb6997e5ea56135954cf93ce6855c1a9e5ab7"
+        },
+        {
+          "file": "full-006.bin",
+          "iv": "rK2FcMIGyRiFmciz",
+          "aad": "manpan-handoff-20261113:full:5:13",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "4d5f5163141e02bc7e12ec6e669fc2b2beaa4fc7b5dd8ada42ee1ff1c592a731"
+        },
+        {
+          "file": "full-007.bin",
+          "iv": "1VaTE38lw3Gqk3mH",
+          "aad": "manpan-handoff-20261113:full:6:13",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "3e91dd352fddaad5fc0f102d20a98c4750e42303861d50e70961112fb3ad06d7"
+        },
+        {
+          "file": "full-008.bin",
+          "iv": "9pvpNdYCqN3FM/KO",
+          "aad": "manpan-handoff-20261113:full:7:13",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "fae0493fd15102b6aad1146c42ed649cbf9a6d0e53b9e76f05cf65289adf2476"
+        },
+        {
+          "file": "full-009.bin",
+          "iv": "LXBIAEbd4t9BtLHW",
+          "aad": "manpan-handoff-20261113:full:8:13",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "cf5ba968f9c75745407a63db5561e545782e84ff133aeacf143dd6e5e85f5b6c"
+        },
+        {
+          "file": "full-010.bin",
+          "iv": "MwpPJPDkEs/W382z",
+          "aad": "manpan-handoff-20261113:full:9:13",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "f6f7a3e8a1814e4817e1403d96e28bc6887d38b66b8169a7dd4139173818052f"
+        },
+        {
+          "file": "full-011.bin",
+          "iv": "4FFcXHsGTsCpx9cH",
+          "aad": "manpan-handoff-20261113:full:10:13",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "8d6370b6fe5f4f5c5ac6c64ccdc3f041de0b70285489722c57b5053efdd7f9d6"
+        },
+        {
+          "file": "full-012.bin",
+          "iv": "SuF9QthMDNPZyJt1",
+          "aad": "manpan-handoff-20261113:full:11:13",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "ec613caa2edd014baf3bf50a73804f00e3f8ff6bb52eb569956ed959347c877c"
+        },
+        {
+          "file": "full-013.bin",
+          "iv": "/SwztXetTC+ZQ77T",
+          "aad": "manpan-handoff-20261113:full:12:13",
+          "bytes": 2892157,
+          "plaintext_bytes": 2892141,
+          "sha256": "6d5cc2a70ce3dddd18c35a7ec2386f6378b10d63a38971030c3623debcb3a2a9"
+        }
+      ]
+    }
+  ]
+}
