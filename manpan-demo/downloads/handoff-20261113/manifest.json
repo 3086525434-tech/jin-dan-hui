@@ -3,6 +3,32 @@
   "collection": "manpan-handoff-20261113",
   "artifacts": [
     {
+      "id": "documents",
+      "label": "全部文档",
+      "filename": "manpan-documents-all-20261113.zip",
+      "bytes": 8855822,
+      "contentType": "application/zip",
+      "sha256": "caf674549abb2478254db207e65f7f5966c51c8082a2495887149fa0591369c7",
+      "parts": [
+        {
+          "file": "documents-001.bin",
+          "iv": "+yGpzkXMtQBgeXRt",
+          "aad": "manpan-handoff-20261113:documents:0:2",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "a201f86c3b8465afc40a2bb85e5992248f6b3523b903acd9ca6761c7e762c98a"
+        },
+        {
+          "file": "documents-002.bin",
+          "iv": "Ht3o9d3P+OMZCDcd",
+          "aad": "manpan-handoff-20261113:documents:1:2",
+          "bytes": 467230,
+          "plaintext_bytes": 467214,
+          "sha256": "cf47e2143a5ed457599830397faafb8e90f861684159b60ff1b7cd5e200d4c55"
+        }
+      ]
+    },
+    {
       "id": "materials",
       "label": "关键材料",
       "filename": "manpan-key-materials-20261113.zip",
@@ -162,6 +188,258 @@
           "bytes": 2892157,
           "plaintext_bytes": 2892141,
           "sha256": "6d5cc2a70ce3dddd18c35a7ec2386f6378b10d63a38971030c3623debcb3a2a9"
+        }
+      ]
+    },
+    {
+      "id": "doc-prd",
+      "label": "PRD V1.7",
+      "filename": "manpan-prd-v1.7.docx",
+      "bytes": 93413,
+      "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "sha256": "d97352046f9112db29854dbbd700b4ec6d59d90e3a6bc3fa139bc5dd1d2f4752",
+      "parts": [
+        {
+          "file": "doc-prd-001.bin",
+          "iv": "T7fxuvAhnZKj9G60",
+          "aad": "manpan-handoff-20261113:doc-prd:0:1",
+          "bytes": 93429,
+          "plaintext_bytes": 93413,
+          "sha256": "e93b94f3ced44861c80566a35bd4230a48a00b3dfd704d21073c42033fb0adb9"
+        }
+      ]
+    },
+    {
+      "id": "doc-data",
+      "label": "脱敏数据工作簿",
+      "filename": "manpan-anonymized-data.xlsx",
+      "bytes": 40344,
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "97e6af64348feb24263885a1946fe34699d8d667c36553bba4d20aa0a27419a9",
+      "parts": [
+        {
+          "file": "doc-data-001.bin",
+          "iv": "vHKLrny1lJiffWNj",
+          "aad": "manpan-handoff-20261113:doc-data:0:1",
+          "bytes": 40360,
+          "plaintext_bytes": 40344,
+          "sha256": "2553c4e4ddc882cd49fa2803bd44ad0bd577b911ebadb1617079b13c28be6538"
+        }
+      ]
+    },
+    {
+      "id": "doc-handoff",
+      "label": "项目交接说明",
+      "filename": "manpan-handoff-guide.docx",
+      "bytes": 41531,
+      "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "sha256": "2f56d9ce68db4c1fea814c6a7575b2e3f9d9a5c2f67fa9a7d2f7837785b8c357",
+      "parts": [
+        {
+          "file": "doc-handoff-001.bin",
+          "iv": "KignG2bKij5Lb0n0",
+          "aad": "manpan-handoff-20261113:doc-handoff:0:1",
+          "bytes": 41547,
+          "plaintext_bytes": 41531,
+          "sha256": "a79ff0fd7b2306b9b1afbff543d670562a9e72ee0b7eafd5c8ec136155241a1b"
+        }
+      ]
+    },
+    {
+      "id": "doc-index",
+      "label": "全部文档目录",
+      "filename": "manpan-documents-index.xlsx",
+      "bytes": 36830,
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sha256": "b77c6cdb4409cba549e029bb4f1dcf768e1bb426f9848f01988c30870cfc91b7",
+      "parts": [
+        {
+          "file": "doc-index-001.bin",
+          "iv": "H83juS4gvFdQIqfy",
+          "aad": "manpan-handoff-20261113:doc-index:0:1",
+          "bytes": 36846,
+          "plaintext_bytes": 36830,
+          "sha256": "2078948896b0cc6bd1c47fed39540bb582847baee855a600294324ee121a0c93"
+        }
+      ]
+    },
+    {
+      "id": "doc-product",
+      "label": "产品定位与能力说明",
+      "filename": "manpan-product.md",
+      "bytes": 2695,
+      "contentType": "text/markdown;charset=utf-8",
+      "sha256": "bba4f98306521500186e1a229ae7707a908bcd67c413a9bb77b996c6d6fadd23",
+      "parts": [
+        {
+          "file": "doc-product-001.bin",
+          "iv": "IZG3FmS4OvS7dTJP",
+          "aad": "manpan-handoff-20261113:doc-product:0:1",
+          "bytes": 2711,
+          "plaintext_bytes": 2695,
+          "sha256": "4ff39a488a40955e3b4ac264a9a210b66f38cc80bbfc853fed243aa6935f9530"
+        }
+      ]
+    },
+    {
+      "id": "doc-readme",
+      "label": "前端使用与开发说明",
+      "filename": "manpan-frontend-readme.md",
+      "bytes": 6798,
+      "contentType": "text/markdown;charset=utf-8",
+      "sha256": "546a11136fa00ed1e2d039fc1c354e442dd4f14159b47f3f4da0208d3582b6d6",
+      "parts": [
+        {
+          "file": "doc-readme-001.bin",
+          "iv": "JMeEC0ivsUwC3WV5",
+          "aad": "manpan-handoff-20261113:doc-readme:0:1",
+          "bytes": 6814,
+          "plaintext_bytes": 6798,
+          "sha256": "b94ee55a6b4a3de61b205818cbaf17e95e1066c02685d24b2db14d30c14dc9c0"
+        }
+      ]
+    },
+    {
+      "id": "doc-design",
+      "label": "网站设计系统与规范",
+      "filename": "manpan-design-system.md",
+      "bytes": 20990,
+      "contentType": "text/markdown;charset=utf-8",
+      "sha256": "d090be7c8ca662b60ed6064b0aedc241bd7153e47780aa0493046c80b48cf3fa",
+      "parts": [
+        {
+          "file": "doc-design-001.bin",
+          "iv": "PVCpv9FCn0jpCswn",
+          "aad": "manpan-handoff-20261113:doc-design:0:1",
+          "bytes": 21006,
+          "plaintext_bytes": 20990,
+          "sha256": "081a05a733a5c9877ca40dcc0d23c06f6aedd84abf9ffcdd8bd42616bf20d133"
+        }
+      ]
+    },
+    {
+      "id": "doc-api",
+      "label": "业务数据与 Agent 接口说明",
+      "filename": "manpan-api-integration.md",
+      "bytes": 6279,
+      "contentType": "text/markdown;charset=utf-8",
+      "sha256": "190c8e52ed85fd2d98426264c0a7138b7d9db3d9a5841851263403b042fb6591",
+      "parts": [
+        {
+          "file": "doc-api-001.bin",
+          "iv": "fIpu8/qQG4qUplrB",
+          "aad": "manpan-handoff-20261113:doc-api:0:1",
+          "bytes": 6295,
+          "plaintext_bytes": 6279,
+          "sha256": "06c372facda834f3d2a51b35797407d5b5df1478302022d0f4563c177db69d43"
+        }
+      ]
+    },
+    {
+      "id": "doc-openapi",
+      "label": "OpenAPI 接口草案",
+      "filename": "manpan-integration-openapi.json",
+      "bytes": 13577,
+      "contentType": "application/json",
+      "sha256": "d711538a7bf295c58d9afb404464279c106d3300a672753650f7de10dbf04c1f",
+      "parts": [
+        {
+          "file": "doc-openapi-001.bin",
+          "iv": "niVNzqEqaU09fLde",
+          "aad": "manpan-handoff-20261113:doc-openapi:0:1",
+          "bytes": 13593,
+          "plaintext_bytes": 13577,
+          "sha256": "1f1b66cbbd2c0b598afa6a1b40ac415432c65301c01236672d3213c15ab9ffb7"
+        }
+      ]
+    },
+    {
+      "id": "doc-deployment",
+      "label": "项目地址与部署版本",
+      "filename": "manpan-project-links-and-versions.json",
+      "bytes": 823,
+      "contentType": "application/json",
+      "sha256": "6fd6ae7b1405979885684224aee03d19dbb4ae4d9df880c868c213330a915106",
+      "parts": [
+        {
+          "file": "doc-deployment-001.bin",
+          "iv": "+0k3/kOQGLscg2st",
+          "aad": "manpan-handoff-20261113:doc-deployment:0:1",
+          "bytes": 839,
+          "plaintext_bytes": 823,
+          "sha256": "90717b360a1b4ea4f142a1780582a070af6f60e4de287b5d18883ad19f23b65e"
+        }
+      ]
+    },
+    {
+      "id": "doc-schema",
+      "label": "数据字段与来源清单",
+      "filename": "manpan-data-schema-and-sources.json",
+      "bytes": 4817,
+      "contentType": "application/json",
+      "sha256": "05b431b2f6deb59ed0018f40a9077f77e4f6bbce1307974226815109ab53da06",
+      "parts": [
+        {
+          "file": "doc-schema-001.bin",
+          "iv": "O4LMfaB+tZYZGRaJ",
+          "aad": "manpan-handoff-20261113:doc-schema:0:1",
+          "bytes": 4833,
+          "plaintext_bytes": 4817,
+          "sha256": "c64238f371790b05820cf0a78afdc63412d08234fdba755c73fcbb07896368ff"
+        }
+      ]
+    },
+    {
+      "id": "doc-poster",
+      "label": "海报定稿 PDF · 580×780 mm",
+      "filename": "manpan-poster-580x780mm.pdf",
+      "bytes": 3764093,
+      "contentType": "application/pdf",
+      "sha256": "0d4157243f1200335b074af1118002537423f86269f63b9123d31958ce9f2ac1",
+      "parts": [
+        {
+          "file": "doc-poster-001.bin",
+          "iv": "zBNUqgURgV7k25Zc",
+          "aad": "manpan-handoff-20261113:doc-poster:0:1",
+          "bytes": 3764109,
+          "plaintext_bytes": 3764093,
+          "sha256": "8f850f334e7a2acb93e58cc17d4997f1a9ee6ae4d5efcb14df68d0c216520ed5"
+        }
+      ]
+    },
+    {
+      "id": "doc-print",
+      "label": "海报印刷尺寸说明",
+      "filename": "manpan-poster-print-notes.txt",
+      "bytes": 402,
+      "contentType": "text/plain;charset=utf-8",
+      "sha256": "082df591b1d3fa0df54c23b269f8ec40b77a81390833797cc3a3738e30174b4e",
+      "parts": [
+        {
+          "file": "doc-print-001.bin",
+          "iv": "/cXVczyf/JnPqF49",
+          "aad": "manpan-handoff-20261113:doc-print:0:1",
+          "bytes": 418,
+          "plaintext_bytes": 402,
+          "sha256": "43602ad6256ff909e3a70e0364f32722b341d10a61d11190c387311525727074"
+        }
+      ]
+    },
+    {
+      "id": "doc-validation",
+      "label": "本轮交付验证摘要",
+      "filename": "manpan-validation-summary.json",
+      "bytes": 599,
+      "contentType": "application/json",
+      "sha256": "52105ce0cf9866133d4bc77ecff8e0913eae3aab7dd47dc778f573208017b2a0",
+      "parts": [
+        {
+          "file": "doc-validation-001.bin",
+          "iv": "GzJcFx5TivqUtMHO",
+          "aad": "manpan-handoff-20261113:doc-validation:0:1",
+          "bytes": 615,
+          "plaintext_bytes": 599,
+          "sha256": "c81fdbdc062e719e240a68d2a1cf1ad9e03faec0f8a9d4e9182df92ab76fc86c"
         }
       ]
     }
