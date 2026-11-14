@@ -442,6 +442,60 @@
           "sha256": "c81fdbdc062e719e240a68d2a1cf1ad9e03faec0f8a9d4e9182df92ab76fc86c"
         }
       ]
+    },
+    {
+      "id": "roadshow-20261114",
+      "label": "3分钟路演稿 · Word",
+      "filename": "manpan-roadshow-3min-20261114.docx",
+      "bytes": 39016,
+      "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "sha256": "fd2fa121523a19e95b50d218f47da2891911665b54b514a0617d74a9ef615a7d",
+      "parts": [
+        {
+          "file": "roadshow-20261114-001.bin",
+          "iv": "mNYWHehdyPyAx4YO",
+          "aad": "manpan-handoff-20261113:roadshow-20261114:0:1",
+          "bytes": 39032,
+          "plaintext_bytes": 39016,
+          "sha256": "d08f3ee569d1f2a3b015c42d86660eadcea729b89ee7ccd282d13ba89684bd53"
+        }
+      ]
+    },
+    {
+      "id": "roadshow-text-20261114",
+      "label": "3分钟路演稿 · 口播正文",
+      "filename": "manpan-roadshow-3min-20261114.txt",
+      "bytes": 2246,
+      "contentType": "text/plain;charset=utf-8",
+      "sha256": "cf6d05ad9361cc94e4fdbac9f56f31debf9f9342a35babcdb4215994fb967738",
+      "parts": [
+        {
+          "file": "roadshow-text-20261114-001.bin",
+          "iv": "hayLE+hUPlxgk2TN",
+          "aad": "manpan-handoff-20261113:roadshow-text-20261114:0:1",
+          "bytes": 2262,
+          "plaintext_bytes": 2246,
+          "sha256": "9b8acc0f4877250cc7eff7c4abd3b2b8338ed70f78756e84ea3e3f6ad1340100"
+        }
+      ]
+    },
+    {
+      "id": "roadshow-notes-20261114",
+      "label": "路演稿口径与结构核对",
+      "filename": "manpan-roadshow-source-notes-20261114.md",
+      "bytes": 2777,
+      "contentType": "text/markdown;charset=utf-8",
+      "sha256": "b35b8ab6056cb5464cc775abc39aadf1de3240d0cbe86ec752d1f368149bd33b",
+      "parts": [
+        {
+          "file": "roadshow-notes-20261114-001.bin",
+          "iv": "sylDeD8NY/SmjmGb",
+          "aad": "manpan-handoff-20261113:roadshow-notes-20261114:0:1",
+          "bytes": 2793,
+          "plaintext_bytes": 2777,
+          "sha256": "dfc21369a6a5296aa258bd62adb756208c765eb47a75bf2a03ef7d37150be4dd"
+        }
+      ]
     }
   ]
 }
