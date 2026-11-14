@@ -1,0 +1,53 @@
+[
+  {
+    "name": "pptx",
+    "repository": "anthropics/skills",
+    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+    "license": "Apache-2.0",
+    "output": "Editable native PPTX; create, edit, validate and render.",
+    "trending_periods": [
+      "weekly",
+      "monthly"
+    ],
+    "reused_existing_installation": false
+  },
+  {
+    "name": "baoyu-slide-deck",
+    "repository": "JimLiu/baoyu-skills",
+    "commit": "ca703c2d7c2c4399a1dc0cf82224f8551e05a96d",
+    "license": "MIT",
+    "output": "Slide images merged into image-based PPTX/PDF; individual elements are not native editable objects.",
+    "trending_periods": [],
+    "reused_existing_installation": false
+  },
+  {
+    "name": "frontend-slides",
+    "repository": "zarazhangrui/frontend-slides",
+    "commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "output": "HTML presentation with animation; PPTX import and static PDF export.",
+    "trending_periods": [],
+    "reused_existing_installation": false
+  },
+  {
+    "name": "slide-design-skill",
+    "repository": "SlideSpeak/slide-design-skill",
+    "commit": "5e87d8ae71f6306e0c88f4910e6c09114581d91b",
+    "license": "MIT",
+    "output": "HTML presentation engine with pitch/consulting/training style references; PDF tools.",
+    "trending_periods": [],
+    "reused_existing_installation": false
+  },
+  {
+    "name": "theme-factory",
+    "repository": "anthropics/skills",
+    "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+    "license": "Apache-2.0",
+    "output": "Font and palette themes; not a standalone slide-file exporter.",
+    "trending_periods": [
+      "weekly",
+      "monthly"
+    ],
+    "reused_existing_installation": true
+  }
+]
