@@ -12,6 +12,10 @@
 <div class="brand">满盘有数 / 项目交付</div><h1>项目资料，直接下载。</h1>
 <p class="lead">所有文档已单独整理，可以整包下载，也可以按需取用每份常用文档。项目源码、离线演示和完整素材仍保留在原下载包中。</p>
 <div class="cards">
+<article class="featured" data-ppt-card><div><h2>满盘有数 · 七页路演PPT</h2><p class="desc">少字、图像为主的16:9演示文稿。文字和流程图可编辑，完整路演稿已按页放入演讲者备注；第5页另附可选1分钟演示提示。</p><p class="size">PPTX · 约5.0 MB · 7页</p></div><button data-artifact="pitch-7slides-20261114" disabled>下载PPT</button></article>
+<article data-ppt-card><div><h2>七页静态预览</h2><p class="desc">快速查看完整页面设计。PDF不显示演讲者备注。</p><p class="size">PDF · 约697 KB · 7页</p></div><button data-artifact="pitch-7slides-pdf-20261114" disabled>下载PDF</button></article>
+<article data-ppt-card><div><h2>逐页演讲者备注</h2><p class="desc">备用阅读版本：按页整理的口述正文、演讲提示和可选演示口述。</p><p class="size">Word · 约41 KB</p></div><button data-artifact="pitch-7slides-notes-20261114" disabled>下载备注</button></article>
+
 <article class="featured"><div><h2>3分钟路演稿 · 11月14日</h2><p class="desc">约800字口播稿：现实问题、八个MVP环节、原型成果与后续试点计划。另附纯文本版和资料核对说明。</p><p class="size">Word · 约39 KB</p></div><button data-artifact="roadshow-20261114" disabled>下载Word稿</button></article>
 <article class="featured"><div><h2>项目文档归档（11月13日）</h2><p class="desc">共 373 份文档与来源记录：PRD、数据、交接、产品与设计、接口与部署、海报 PDF、验证记录及技能参考。</p><p class="size">约 8.9 MB · ZIP · 附 Excel 目录</p></div><button data-artifact="documents" disabled>下载全部文档</button></article>
 <article data-project-card><div><h2>关键材料</h2><p class="desc">PRD V1.7、脱敏数据工作簿、Word 交接说明与接口草案。</p><p class="size">约 177 KB · ZIP</p></div><button data-artifact="materials" disabled>下载材料</button></article>
@@ -37,12 +41,20 @@ async function init(){
   const raw=bytesFromBase64(padded);
   if(raw.length!==32)throw new Error('下载凭证不完整，请重新打开完整链接。');
   downloadKey=await crypto.subtle.importKey('raw',raw,{name:'AES-GCM'},false,['decrypt']);
-  const response=await fetch('./manifest.json?docs=20261114-speech-v1',{cache:'no-store',credentials:'omit'});
+  const response=await fetch('./manifest.json?docs=20261114-ppt-v1',{cache:'no-store',credentials:'omit'});
   if(!response.ok)throw new Error('下载信息暂时无法读取，请稍后刷新重试。');
   manifest=await response.json();
   buttons.forEach(button=>{button.disabled=false;button.addEventListener('click',()=>download(button.dataset.artifact));});
   const query=new URLSearchParams(location.search);
   if(query.get('view')==='documents'){document.querySelector('#document-files').open=true;document.querySelectorAll('[data-project-card]').forEach(card=>card.hidden=true);}
+  if(query.get('view')==='ppt'){
+    document.title='满盘有数 · 七页路演PPT';
+    document.querySelector('h1').textContent='七页路演，直接下载。';
+    document.querySelector('.lead').textContent='完整路演稿已放入每页演讲者备注，页面以大数字、图示和真实工作台截图为主。';
+    document.querySelectorAll('article:not([data-ppt-card])').forEach(card=>card.hidden=true);
+    document.querySelector('#document-files').hidden=true;
+    document.querySelector('.note').textContent='在PowerPoint中选择“幻灯片放映 → 使用演讲者视图”，即可边播放边查看口述稿。持完整下载链接可读取这些资料。';
+  }
   const wanted=buttons.find(button=>button.dataset.artifact===query.get('focus'));
   if(wanted){document.querySelector('#document-files').open=true;wanted.closest('article').scrollIntoView({block:'center'});}
   statusEl.textContent='文件已就绪。点击上方按钮开始下载，保存时可选择桌面。';

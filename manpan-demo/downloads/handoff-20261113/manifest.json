@@ -496,6 +496,60 @@
           "sha256": "dfc21369a6a5296aa258bd62adb756208c765eb47a75bf2a03ef7d37150be4dd"
         }
       ]
+    },
+    {
+      "id": "pitch-7slides-20261114",
+      "label": "七页路演PPT",
+      "filename": "满盘有数-七页路演-含演讲者备注.pptx",
+      "contentType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "bytes": 4983297,
+      "sha256": "6779b4f3d994ddbe26079c93a7489072f1169fe87e319959a8d67bf4f184f4ab",
+      "parts": [
+        {
+          "file": "pitch-7slides-20261114-part-001.bin",
+          "iv": "oItFd1ItZCuEje+L",
+          "aad": "manpan-handoff-20261113:pitch-7slides-20261114:1:1",
+          "bytes": 4983313,
+          "plaintext_bytes": 4983297,
+          "sha256": "1a7414a99e895c3411ef6756852df6a0b928d6c00d954401fe5bebadcc98dd7d"
+        }
+      ]
+    },
+    {
+      "id": "pitch-7slides-pdf-20261114",
+      "label": "七页PDF预览",
+      "filename": "满盘有数-七页路演-含演讲者备注.pdf",
+      "contentType": "application/pdf",
+      "bytes": 696811,
+      "sha256": "7f2ef2ae56f1b01ef16f08d5a70e6d8508c54e430a233518bfc333676ce322f4",
+      "parts": [
+        {
+          "file": "pitch-7slides-pdf-20261114-part-001.bin",
+          "iv": "g1AaYvVeT1uatZE4",
+          "aad": "manpan-handoff-20261113:pitch-7slides-pdf-20261114:1:1",
+          "bytes": 696827,
+          "plaintext_bytes": 696811,
+          "sha256": "d02e36b6885093a8a10eaffe16afb5ff1cdd5495d39bf4c61194b08508217ddb"
+        }
+      ]
+    },
+    {
+      "id": "pitch-7slides-notes-20261114",
+      "label": "逐页演讲者备注",
+      "filename": "满盘有数-七页演讲者备注.docx",
+      "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "bytes": 40675,
+      "sha256": "2565c7fd125ebe25d242211333101b4798c534fd2f06bc1c450c92550dde00f7",
+      "parts": [
+        {
+          "file": "pitch-7slides-notes-20261114-part-001.bin",
+          "iv": "39PQv67WDmOFMS+P",
+          "aad": "manpan-handoff-20261113:pitch-7slides-notes-20261114:1:1",
+          "bytes": 40691,
+          "plaintext_bytes": 40675,
+          "sha256": "5143404f2cdb38d15a1ef31a8de392daee23ee01f42710110575cc0699f13887"
+        }
+      ]
     }
   ]
 }
