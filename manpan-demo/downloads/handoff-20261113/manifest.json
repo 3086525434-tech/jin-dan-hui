@@ -550,6 +550,60 @@
           "sha256": "5143404f2cdb38d15a1ef31a8de392daee23ee01f42710110575cc0699f13887"
         }
       ]
+    },
+    {
+      "id": "flows-html-20261114",
+      "label": "交互流程图册",
+      "filename": "满盘有数-业务流程图册.html",
+      "contentType": "text/html",
+      "bytes": 59239,
+      "sha256": "aa745e241f1faddd3a79c14fd7f79dd25e8ad51c5f792eb889155bdab7f5ec7b",
+      "parts": [
+        {
+          "file": "flows-html-20261114-part-001.bin",
+          "iv": "zlEVGFZFHg8kb1DE",
+          "aad": "manpan-handoff-20261113:flows-html-20261114:1:1",
+          "bytes": 59255,
+          "plaintext_bytes": 59239,
+          "sha256": "d62a06688e4649d403e9f0fbaa16a0392084cf458161f066a705e41f8b8af6f5"
+        }
+      ]
+    },
+    {
+      "id": "flows-pdf-20261114",
+      "label": "七张流程图打印版",
+      "filename": "满盘有数-七张流程图-打印版.pdf",
+      "contentType": "application/pdf",
+      "bytes": 768044,
+      "sha256": "a623d088caaf52713383240489c21ea24f6d42437c41dcd5a929e63848188988",
+      "parts": [
+        {
+          "file": "flows-pdf-20261114-part-001.bin",
+          "iv": "me50H19qhNz3IpMS",
+          "aad": "manpan-handoff-20261113:flows-pdf-20261114:1:1",
+          "bytes": 768060,
+          "plaintext_bytes": 768044,
+          "sha256": "9c87ebec5751a686437597bbd080cf3737320b07d8507f24ab35785d2984355b"
+        }
+      ]
+    },
+    {
+      "id": "flows-assets-20261114",
+      "label": "流程图素材包",
+      "filename": "满盘有数-流程图素材包.zip",
+      "contentType": "application/zip",
+      "bytes": 433768,
+      "sha256": "3a671d3d800de1812b5798d3a0948f7db01593296181aad9f3d1dea9999ee521",
+      "parts": [
+        {
+          "file": "flows-assets-20261114-part-001.bin",
+          "iv": "DtE/YHFv7aeIWruC",
+          "aad": "manpan-handoff-20261113:flows-assets-20261114:1:1",
+          "bytes": 433784,
+          "plaintext_bytes": 433768,
+          "sha256": "cf48d7f1edb0835f02a10e20e92f113240be55e7fbaeee2bf3d81136fda80bc5"
+        }
+      ]
     }
   ]
 }
