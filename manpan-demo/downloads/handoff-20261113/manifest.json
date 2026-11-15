@@ -604,6 +604,122 @@
           "sha256": "cf48d7f1edb0835f02a10e20e92f113240be55e7fbaeee2bf3d81136fda80bc5"
         }
       ]
+    },
+    {
+      "id": "leadership-ppt-20261115",
+      "label": "领导汇报版PPT",
+      "filename": "满盘有数-领导汇报版-保留原封面.pptx",
+      "contentType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "bytes": 7945979,
+      "sha256": "f75a65f680d3bf8163204264a570f5ed6080cc786f255c813d41d59fd1c44736",
+      "parts": [
+        {
+          "file": "leadership-ppt-20261115-part-001.bin",
+          "iv": "w7tNbSWZ/FyVEXm6",
+          "aad": "manpan-handoff-20261113:leadership-ppt-20261115:1:1",
+          "bytes": 7945995,
+          "plaintext_bytes": 7945979,
+          "sha256": "4a0145e704feba29acd18091bc7ce91574d9cdc03af16f60068ae8aa5d3a8ef2"
+        }
+      ]
+    },
+    {
+      "id": "leadership-pdf-20261115",
+      "label": "领导汇报版PDF",
+      "filename": "满盘有数-领导汇报版-保留原封面.pdf",
+      "contentType": "application/pdf",
+      "bytes": 1858800,
+      "sha256": "f1983adc4f0cd03cf86ba6f819537dbe87c0f44c000fc8c536c0d520bbd9459b",
+      "parts": [
+        {
+          "file": "leadership-pdf-20261115-part-001.bin",
+          "iv": "kLTMPfRgg+xIdsyp",
+          "aad": "manpan-handoff-20261113:leadership-pdf-20261115:1:1",
+          "bytes": 1858816,
+          "plaintext_bytes": 1858800,
+          "sha256": "783909c453b415507ae46b07db0423923b3ce5ce614263232b54c26a5dbed8ea"
+        }
+      ]
+    },
+    {
+      "id": "leadership-notes-20261115",
+      "label": "逐页主讲与领导问答",
+      "filename": "满盘有数-逐页主讲与领导问答.docx",
+      "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "bytes": 40920,
+      "sha256": "f4138c1926f9be90ac80475a8b90747151f154cf8bed9e8ff477f767ccfe93dc",
+      "parts": [
+        {
+          "file": "leadership-notes-20261115-part-001.bin",
+          "iv": "bomFSDJU/oDSVv8I",
+          "aad": "manpan-handoff-20261113:leadership-notes-20261115:1:1",
+          "bytes": 40936,
+          "plaintext_bytes": 40920,
+          "sha256": "aa9c0624751d2dc83ea4072e89ea0275771497fda8eaf3dc2da96d6aff889770"
+        }
+      ]
+    },
+    {
+      "id": "leadership-design-20261115",
+      "label": "海报与封面设计含义",
+      "filename": "海报与封面设计含义.docx",
+      "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "bytes": 37303,
+      "sha256": "ea8aae13260a442a7d36697efd728311a7c9e39e3e678350ba4785b5b142eeb0",
+      "parts": [
+        {
+          "file": "leadership-design-20261115-part-001.bin",
+          "iv": "MnXOhMec/Y+7BtfX",
+          "aad": "manpan-handoff-20261113:leadership-design-20261115:1:1",
+          "bytes": 37319,
+          "plaintext_bytes": 37303,
+          "sha256": "e605983d48b5b593fe800ff8e8b9996cd94b30195ddc8c4d5d43b5abceb2e3bc"
+        }
+      ]
+    },
+    {
+      "id": "leadership-economics-20261115",
+      "label": "可改预算的盈亏平衡测算",
+      "filename": "盈亏平衡测算-可改预算.xlsx",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "bytes": 10054,
+      "sha256": "5ad413521c1fa105d368aca3eb01002498dd65038f27a8d3930fe2d63539dd70",
+      "parts": [
+        {
+          "file": "leadership-economics-20261115-part-001.bin",
+          "iv": "cmd/qzTl2jXz/cvz",
+          "aad": "manpan-handoff-20261113:leadership-economics-20261115:1:1",
+          "bytes": 10070,
+          "plaintext_bytes": 10054,
+          "sha256": "3a816d18c0aef804c82307d6db636dd413c1e0d040b8816d81c677b613b50e84"
+        }
+      ]
+    },
+    {
+      "id": "leadership-bundle-20261115",
+      "label": "领导汇报材料包",
+      "filename": "满盘有数-领导汇报材料包.zip",
+      "contentType": "application/zip",
+      "bytes": 10105322,
+      "sha256": "532a6f0f47fd81ef5ab1f8c68a17f826f1a3ed2bc2870144c7329c5e36f755e9",
+      "parts": [
+        {
+          "file": "leadership-bundle-20261115-part-001.bin",
+          "iv": "K3NNr5jZqKls9q3W",
+          "aad": "manpan-handoff-20261113:leadership-bundle-20261115:1:2",
+          "bytes": 8388624,
+          "plaintext_bytes": 8388608,
+          "sha256": "c1d79d467867343acfe8300e37278fd3fb8f57736316808af8c72821810658ad"
+        },
+        {
+          "file": "leadership-bundle-20261115-part-002.bin",
+          "iv": "VTPIAtg+XqG+X8Mj",
+          "aad": "manpan-handoff-20261113:leadership-bundle-20261115:2:2",
+          "bytes": 1716730,
+          "plaintext_bytes": 1716714,
+          "sha256": "e4ec34b6b7142aec9374b61bf46d2250e37ab908036de100707ab21160695781"
+        }
+      ]
     }
   ]
 }
